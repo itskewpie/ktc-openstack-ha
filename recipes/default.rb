@@ -28,7 +28,10 @@ node["ha"]["available_services"].each do |s|
 end
 
 # To avoid trying to run keystone_register for nova-metadata, we configure haproxy virtual server for nova-metadata here.
-role, ns, svc, lb_mode, lb_algo, lb_opts = "nova-api-metadata", "nova", "metadata", "http", "roundrobin", [ "forwardfor", "httpchk", "httplog" ]
+v = node["ha"]["extra_services"]["nova-metadata"]
+role, ns, svc, lb_mode, lb_algo, lb_opts = 
+    v["role"], v["namespace"], v["service"], v["lb_mode"],
+    v["lb_algorithm"], v["lb_options"]
 
 listen_ip = "0.0.0.0"
 listen_port = rcb_safe_deref(node, "#{ns}.services.#{svc}.port") ? node[ns]["services"][svc]["port"] : get_realserver_endpoints(role, ns, svc)[0]["port"]
