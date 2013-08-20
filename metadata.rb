@@ -7,6 +7,5 @@ version           "1.0.6"
 supports          "ubuntu"
 
 depends "haproxy"
-depends "keepalived"
-
-recipe "default", ""
+# hard lock here
+depends "keepalived", "= 1.0.5"
