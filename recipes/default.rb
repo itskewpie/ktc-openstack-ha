@@ -4,12 +4,9 @@
 #
 include_recipe "keepalived"
 include_recipe "etcd"
-
-# makesure we can bind nonlocal IP's  (vips)
-sysctl "net.ipv4.ip_nonlocal_bind" do
-  value "1"
-end
+include_recipe "sysctl::attribute_driver"
 
 node[:vips].each do |vip|
-  # create keepalived instance
+  # create keepalived instances
+
 end
