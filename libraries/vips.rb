@@ -7,7 +7,8 @@ module KTC
       #  can specify a network name to return that set
       def addresses( vips, network=nil )
         if network
-          ips = no_network(network, vips).map { |v| v[:ip] }
+          data = on_network(network, vips)
+          ips = data.map { |v| v.has_key? :ip ? v[:ip] : nil }
         else
           vips.each_key.map {|k| vips[k][:ip]}
         end
@@ -17,17 +18,18 @@ module KTC
       # return  a list of vips
       def on_network( network, vips )
         matched = Array.new
-        vips.each do |vip|
-          if vip.has_key? :net
+        vips.each do |name, data|
+          if data.has_key? :net
             # vip has a net key push it
-            if vip[:net] == network
-              matched.push vip
+            if data[:net] == network
+              matched.push data
             end
           # default with no key is public
           elsif network == "public"
-            matched.push vip
+            matched.push data
           end
         end
+        matched
       end
 
     end

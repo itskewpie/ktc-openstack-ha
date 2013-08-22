@@ -9,6 +9,6 @@ supports          "ubuntu"
 depends "haproxy"
 # hard lock here
 depends "keepalived", "= 1.0.5"
-depends "ktc-utils", "~> 0.1.1"
 depends "etcd"
 depends "sysctl", "~> 2.0.0"
+depends "ktc-utils", "~> 0.2.1"

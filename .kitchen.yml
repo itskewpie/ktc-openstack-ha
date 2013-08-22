@@ -15,5 +15,6 @@ platforms:
 suites:
 - name: default
   run_list:
+    - recipe[etcd::default]
     - recipe[ktc-openstack-ha]
-  attributes: {}
+  attributes: 

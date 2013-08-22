@@ -18,6 +18,8 @@ module KTC
         g = Chef::Resource::ChefGem.new "etcd", run_context
         run_context.resource_collection.insert g
         g.run_action :install
+
+        require "etcd"
       end
     end
 
@@ -33,20 +35,52 @@ module KTC
         servers = locate_etcd_servers
       end
 
-      Chef::Log.debug("#### available servers: #{servers}")
-
       # if nothing is found just use attributes
       # chose any server, first will do
       # TODO: this should ideally try individaul servers an ensure the
       # connection it returns is good
-      unless servers.nil? and servers.empty?
-        ip = servers.values.first["ip"]
-        port = servers.values.first["port"]
-      else
+      if servers.nil? or servers.empty?
         ip = node["etcd"]["ip"]
         port = node["etcd"]["port"]
+      else
+        ip = servers.values.first["ip"]
+        port = servers.values.first["port"]
       end
-      client = Etcd.client(:host=>ip, :port=>port)
+      client = ::Etcd.client(:host=>ip, :port=>port)
+    end
+
+
+    #
+    # Takes a hash of vips and registers the enpoints
+    #
+    def register_vips vips
+      vips.each_pair do |k, v|
+        proto =  v[:proto] || "http"
+        uri   =  v[:uri] || "#{proto.to_s}://#{v[:ip]}:#{v[:port]}"
+        set_endpoint k, {
+          ip: v[:ip],
+          port: v[:port],
+          proto: proto,
+          uri: uri
+        }
+      end
+    end
+
+    #
+    #
+    # set_endpoint name, data
+    # TODO: endpoint and service are very similar, DRY these out
+    #
+    def set_endpoint name, data
+      data.each do |k, v|
+        begin
+          path = "/openstack/services/#{name}/enpoint/#{k}"
+          puts "adding key #{path}"
+          client.set(path, v)
+        rescue
+          puts "enable to contact etcd server"
+        end
+      end
     end
 
     #
@@ -60,18 +94,20 @@ module KTC
     #   { "ip" =>  "10.10.10.11", "port" => 8101 }
     # ]
     def real_servers( endpoint )
+      results = Array.new
       boxes = members( endpoint )
-      boxes.each do |box|
-        results << {
-          'ip' => box['ip'].
-          'port' => box['port']
-        }
+      unless boxes.nil? or boxes.empty?
+        boxes.each do |box, data|
+          results << { 'ip' => data['ip'], 'port' => data['port'] }
+        end
       end
+      results
     end
 
 
     # find servers using chef!
     def locate_etcd_servers
+
       query = "(chef_environment:#{node.chef_environment} "
       query << "AND recipes:etcd) "
       query << "OR (chef_environment:#{node.chef_environment} "
@@ -126,7 +162,7 @@ module KTC
       end
     end
 
-    def endpoint name
+    def get_endpoint name
       # if ha_disabled is set pull the member config directly
       # instead of from the endpoint
       if not node["ha_disabled"].nil?

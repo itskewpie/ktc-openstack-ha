@@ -5,7 +5,7 @@ module KTC
       def if_addr node, int
         interface_node = node["network"]["interfaces"][int]["addresses"]
         interface_node.select do |address, data|
-          if data['family'] == family
+          if data['family'] == "inet"
             return address
           end
         end

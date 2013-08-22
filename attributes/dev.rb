@@ -1,8 +1,11 @@
 
 # setup dev vips
 return  unless  chef_environment == "dev"
-node[:vips] = {
-  "mysql-db" =>  {
+# we want to override defaults
+include_attribute "ktc-openstack-ha::default"
+
+default[:vips] = {
+  "mysql" =>  {
     ip: "10.1.1.2",
     port: 3306,
   },
@@ -19,7 +22,7 @@ node[:vips] = {
     port: 8774
   },
   "compute-ec2-api" => {
-    ip: 10.1.1.2,
+    ip: "10.1.1.2",
     port: 8773
   },
   "compute-ec2-admin" => {
