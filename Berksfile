@@ -6,7 +6,7 @@ site :opscode
 metadata
 
 cookbook "keeepalived",
-  github: "spheromak/keepaliveed",
+  github: "spheromak/keepalived",
   branch: "integration"
 
 cookbook "sysctl",
