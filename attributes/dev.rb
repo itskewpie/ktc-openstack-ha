@@ -1,11 +1,10 @@
-
 # setup dev vips
 return  unless  chef_environment == "dev"
 # we want to override defaults
 include_attribute "ktc-openstack-ha::default"
 
 default[:vips] = {
-  "mysql" =>  {
+  "mysql" => {
     ip: "10.1.1.2",
     port: 3306,
   },

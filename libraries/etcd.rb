@@ -1,7 +1,7 @@
 module KTC
   class Etcd
-    # support chef11
-    if  Chef::Version.new(Chef::VERSION) <= Chef::Version.new( "10.16.2" )
+    # support chef10
+    if  Chef::Version.new(Chef::VERSION) <= Chef::Version.new("11.0.0")
       include Chef::Mixin::Language
     else
       include Chef::DSL::DataQuery
@@ -93,9 +93,9 @@ module KTC
     #   { "ip" =>  "10.10.10.10", "port" => 8000 },
     #   { "ip" =>  "10.10.10.11", "port" => 8101 }
     # ]
-    def real_servers( endpoint )
+    def real_servers endpoint
       results = Array.new
-      boxes = members( endpoint )
+      boxes = members endpoint
       unless boxes.nil? or boxes.empty?
         boxes.each do |box, data|
           results << { 'ip' => data['ip'], 'port' => data['port'] }
@@ -130,7 +130,8 @@ module KTC
     def register service_name, data
       data.each do |k, v|
         begin
-          path = "/openstack/services/#{service_name}/members/#{node["fqdn"]}/#{k}"
+          service = "/openstack/services/#{service_name}"
+          path = "#{service}/members/#{node["fqdn"]}/#{k}"
           puts "adding key #{path}"
           client.set(path, v)
         rescue
@@ -149,7 +150,7 @@ module KTC
         members = client.get(base_path)
         # if only one endpoint is returns ep will be a Mash, more than one, an Array
         if members.class == Hashie::Mash
-          return _member_data( members )
+          return _member_data members
         elsif member.class == Array
           nodes = Hash.new
           members.each do |a|
@@ -201,7 +202,7 @@ module KTC
       return d
     end
 
-private
+    private
 
     #
     # fetch extra member data from a path in etcd
