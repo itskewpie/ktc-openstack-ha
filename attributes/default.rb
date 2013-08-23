@@ -1,15 +1,15 @@
-# Define KTC's own ha services as the extra_services that shouldn't be defined in the available_services. (eg. nova-metadata, mysql-db, rabbit-mq)
-default["ha"]["extra_services"]["nova-metadata"] = {
-          "role" => "nova-api-metadata",
-          "namespace" => "nova",
-          "service" => "metadata",
-          "service_type" => "",
-          "lb_mode" => "http",
-          "lb_algorithm" => "roundrobin",
-          "lb_options" => [
-            "forwardfor",
-            "httplog"
-          ],
-          "vrid" => 0,
-          "vip_network" => "public"
+include_attribute "ktc-utils"
+
+default[:vips] = {
+  # overide this example
+  example: {
+    ip: "127.0.0.1",
+    port: 1234,
+    options: %w[ some option settings ],
+    proto: "udp",
+    mode: "http",
+    algo: "sh",
+    kind:  "tun",
+    net:  "public"
+  }
 }
