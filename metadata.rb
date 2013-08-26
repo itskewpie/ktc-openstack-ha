@@ -10,5 +10,5 @@ depends "haproxy"
 # hard lock here
 depends "keepalived", "= 1.0.5"
 depends "etcd"
-depends "sysctl", "~> 2.0.0"
+depends "sysctl", "~> 0.3.3"
 depends "ktc-utils", "~> 0.2.1"
