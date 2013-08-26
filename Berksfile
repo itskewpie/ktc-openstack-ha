@@ -11,7 +11,7 @@ cookbook "keepalived",
   branch: "integration"
 
 cookbook "sysctl",
-  github: "spheromak/sysctl-cookbook"
+  github: "onehealth-cookbooks/sysctl"
 
 cookbook "ktc-utils",
   github: "cloudware-cookbooks/ktc-utils",
