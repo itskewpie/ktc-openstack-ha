@@ -61,6 +61,6 @@ endpoints.each do |ep|
     lb_algo  "rr"
     lb_kind  "nat"
     vs_protocol ep.proto
-    real_servers lb_service.members.map {|m| m.to_hash }
+    real_servers lb_service.members.map { |m| m.to_hash }
   end
 end
