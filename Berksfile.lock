@@ -1,10 +1,15 @@
 {
+  "sha": "e1b09a0342b302801df1412c0428b10da916e033",
   "sources": {
     "ktc-openstack-ha": {
+      "locked_version": "2.0.0",
+      "constraint": "= 2.0.0",
       "path": "."
     },
-    "etcd": {
-      "locked_version": "1.2.3"
+    "ktc-etcd": {
+      "locked_version": "1.1.4",
+      "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
+      "ref": "6daab4a5eee14842e818ba30cc6bc9c88d61fe32"
     },
     "keepalived": {
       "locked_version": "1.0.5",
@@ -17,9 +22,14 @@
       "ref": "d6a5d76748cfdf8101ec44088767f67662ada360"
     },
     "ktc-utils": {
-      "locked_version": "0.2.1",
+      "locked_version": "0.3.1",
       "git": "git://github.com/cloudware-cookbooks/ktc-utils.git",
-      "ref": "2e64fe69c2731aab00d6e64ea1c5d5e5335cf708"
+      "ref": "c8315777e72e05779bb96d8775c0804519ec0e13"
+    },
+    "services": {
+      "locked_version": "1.0.6",
+      "git": "git://github.com/spheromak/services-cookbook.git",
+      "ref": "6ce7c7f76081a5d4d742adee58a94acf94137cac"
     },
     "openstack-common": {
       "locked_version": "0.4.3",
@@ -27,13 +37,17 @@
       "ref": "eb5eed7126b6a6efbaf803e8a594d610cf661e97"
     },
     "haproxy": {
-      "locked_version": "1.3.2"
+      "locked_version": "1.4.0"
     },
     "cpu": {
-      "locked_version": "0.2.0"
+      "locked_version": "0.2.0",
+      "constraint": ">= 0.2.0"
     },
     "build-essential": {
       "locked_version": "1.4.0"
+    },
+    "etcd": {
+      "locked_version": "1.2.4"
     },
     "ark": {
       "locked_version": "0.3.0"
@@ -48,16 +62,18 @@
       "locked_version": "1.4.0"
     },
     "mysql": {
-      "locked_version": "3.0.2"
+      "locked_version": "3.0.4",
+      "constraint": ">= 1.3.0"
     },
     "openssl": {
-      "locked_version": "1.0.2"
+      "locked_version": "1.1.0"
     },
     "postgresql": {
-      "locked_version": "3.0.2"
+      "locked_version": "3.0.4",
+      "constraint": ">= 1.0.0"
     },
     "aws": {
-      "locked_version": "0.101.2"
+      "locked_version": "0.101.4"
     },
     "xfs": {
       "locked_version": "1.1.0"
