@@ -1,5 +1,5 @@
 {
-  "sha": "e1b09a0342b302801df1412c0428b10da916e033",
+  "sha": "be46be7fc2376eb86cae31cc47a804f9bd4ad292",
   "sources": {
     "ktc-openstack-ha": {
       "locked_version": "2.0.0",
