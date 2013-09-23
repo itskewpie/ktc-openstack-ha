@@ -6,11 +6,6 @@ include_recipe "sysctl"
 include_recipe "services"
 include_recipe "keepalived"
 
-# make sure we can bind non local IP adress
-sysctl "net.ipv4.ip_nonlocal_bind" do
-  value "1"
-end
-
 # we install this here cause keepalive doens't
 package "ipvsadm"
 
