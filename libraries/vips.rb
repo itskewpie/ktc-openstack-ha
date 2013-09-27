@@ -17,7 +17,7 @@ module KTC
       def addresses network=nil
         if network
           data = on_network network
-          ips = data.map { |v| v.has_key? :ip ? v[:ip] : nil }
+          ips = data.map { |v| (v.has_key? :ip) ? v[:ip] : nil }
         else
           vips.each_key.map { |k| vips[k][:ip] }
         end
