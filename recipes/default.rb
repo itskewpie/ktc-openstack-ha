@@ -33,6 +33,13 @@ node[:vips].each do |name, vip|
   endpoints.push endpoint
 end
 
+keepalived_chkscript "haproxy" do
+   script "haproxy status"
+   interval 5
+   action :create
+   not_if {File.exists?('/etc/keepalived/conf.d/script_haproxy.conf')}
+end
+
 #
 # setup a VRRP instance on public int
 #  right now we aren't using any other int
@@ -49,13 +56,14 @@ end
 endpoints.each do |ep|
   # load service from etcd
   lb_service = Services::Service.new(ep.name)
-  keepalived_virtual_server ep.name do
-    vs_listen_ip ep.ip
-    vs_listen_port ep.port.to_s
-    # TODO: Add this to endpoint data ?
+
+  haproxy_lb ep.name do
+    bind "#{ep.ip}:#{ep.port}"
     lb_algo  "rr"
-    lb_kind  "nat"
-    vs_protocol ep.proto
-    real_servers lb_service.members.map { |m| m.to_hash }
+    mode ep.proto
+    servers lb_service.members.map { |m| "#{m.ip}:#{m.port} #{m.weight} maxconn 500 check" }
+    options ep.options if ep.options
   end
 end
+
+include_recipe "haproxy"
