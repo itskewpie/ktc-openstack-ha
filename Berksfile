@@ -15,12 +15,17 @@ cookbook "keepalived",
 cookbook "sysctl",
   github: "onehealth-cookbooks/sysctl"
 
+cookbook "ktc-testing",
+  github: "cloudware-cookbooks/ktc-testing",
+  branch: "master"
+
 cookbook "ktc-utils",
   github: "cloudware-cookbooks/ktc-utils",
   branch: "develop"
 
 cookbook "services",
-  github: "spheromak/services-cookbook"
+  #github: "spheromak/services-cookbook"
+  path: "../services-cookbook"
 
 cookbook "openstack-common",
   github: "stackforge/cookbook-openstack-common"

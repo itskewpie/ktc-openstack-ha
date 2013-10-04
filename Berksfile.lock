@@ -6,7 +6,7 @@
     "ktc-etcd": {
       "locked_version": "1.1.4",
       "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
-      "ref": "6daab4a5eee14842e818ba30cc6bc9c88d61fe32"
+      "ref": "85ff6bf8451dec06dae181edecb594e0a85c4df3"
     },
     "keepalived": {
       "locked_version": "1.0.5",
@@ -18,15 +18,18 @@
       "git": "git://github.com/onehealth-cookbooks/sysctl.git",
       "ref": "494290c8d9a042e52ba8b9ee7976b6c46f09906a"
     },
+    "ktc-testing": {
+      "locked_version": "0.0.1",
+      "git": "git://github.com/cloudware-cookbooks/ktc-testing.git",
+      "ref": "588954102fd7d0a1569fa17bf84dd9e5ddc1b3a7"
+    },
     "ktc-utils": {
       "locked_version": "0.3.2",
       "git": "git://github.com/cloudware-cookbooks/ktc-utils.git",
-      "ref": "954203349653b3f26d0012e85d559a50d0279d82"
+      "ref": "2ee6a15c28bd23ae7eff809060374e9d7412c733"
     },
     "services": {
-      "locked_version": "1.0.7",
-      "git": "git://github.com/spheromak/services-cookbook.git",
-      "ref": "d251bfebaabdc9ed6108ccd876ade562ca1809e2"
+      "path": "../services-cookbook"
     },
     "openstack-common": {
       "locked_version": "0.4.3",
@@ -34,7 +37,7 @@
       "ref": "eb5eed7126b6a6efbaf803e8a594d610cf661e97"
     },
     "haproxy": {
-      "locked_version": "1.4.0"
+      "locked_version": "1.5.0"
     },
     "cpu": {
       "locked_version": "0.2.0"
@@ -47,6 +50,12 @@
     },
     "ark": {
       "locked_version": "0.3.2"
+    },
+    "partial_search": {
+      "locked_version": "1.0.2"
+    },
+    "ubuntu": {
+      "locked_version": "1.1.2"
     },
     "apt": {
       "locked_version": "2.1.1"
