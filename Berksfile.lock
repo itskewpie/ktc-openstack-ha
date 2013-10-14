@@ -1,73 +1,90 @@
 {
+  "sha": "20416fa60026dc0373473197c666ffe99907c444",
   "sources": {
     "ktc-openstack-ha": {
+      "locked_version": "2.0.0",
+      "constraint": "= 2.0.0",
       "path": "."
-    },
-    "ktc-etcd": {
-      "locked_version": "1.1.4",
-      "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
-      "ref": "6daab4a5eee14842e818ba30cc6bc9c88d61fe32"
     },
     "keepalived": {
       "locked_version": "1.0.5",
       "git": "git://github.com/spheromak/keepalived.git",
       "ref": "ae162e239ddcccec3416899d36c4523f280272cc"
     },
-    "sysctl": {
-      "locked_version": "0.3.3",
-      "git": "git://github.com/onehealth-cookbooks/sysctl.git",
-      "ref": "494290c8d9a042e52ba8b9ee7976b6c46f09906a"
+    "ktc-etcd": {
+      "locked_version": "1.1.4",
+      "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
+      "ref": "435b4b64807a8f75c1807e41eb951fb8781ae094"
     },
     "ktc-utils": {
-      "locked_version": "0.3.2",
+      "locked_version": "0.3.3",
       "git": "git://github.com/cloudware-cookbooks/ktc-utils.git",
-      "ref": "954203349653b3f26d0012e85d559a50d0279d82"
-    },
-    "services": {
-      "locked_version": "1.0.7",
-      "git": "git://github.com/spheromak/services-cookbook.git",
-      "ref": "d251bfebaabdc9ed6108ccd876ade562ca1809e2"
+      "ref": "4ae9af81256bc8d6b9d4063c255553f0821b9969"
     },
     "openstack-common": {
       "locked_version": "0.4.3",
       "git": "git://github.com/stackforge/cookbook-openstack-common.git",
       "ref": "eb5eed7126b6a6efbaf803e8a594d610cf661e97"
     },
+    "services": {
+      "locked_version": "1.1.1",
+      "git": "git://github.com/spheromak/services-cookbook.git",
+      "ref": "29c849ee1842aae0989b5f5f58b9f75c71620ab0"
+    },
+    "sysctl": {
+      "locked_version": "0.3.3"
+    },
+    "ktc-testing": {
+      "locked_version": "0.0.1",
+      "git": "git://github.com/cloudware-cookbooks/ktc-testing.git",
+      "ref": "588954102fd7d0a1569fa17bf84dd9e5ddc1b3a7"
+    },
     "haproxy": {
-      "locked_version": "1.4.0"
+      "locked_version": "1.5.0"
     },
     "cpu": {
-      "locked_version": "0.2.0"
+      "locked_version": "0.2.0",
+      "constraint": ">= 0.2.0"
     },
     "build-essential": {
       "locked_version": "1.4.2"
     },
     "etcd": {
-      "locked_version": "1.2.4"
+      "locked_version": "1.3.1"
     },
     "ark": {
-      "locked_version": "0.3.2"
+      "locked_version": "0.4.0"
+    },
+    "partial_search": {
+      "locked_version": "1.0.6"
     },
     "apt": {
-      "locked_version": "2.1.1"
+      "locked_version": "2.2.1"
     },
     "database": {
-      "locked_version": "1.4.0"
+      "locked_version": "1.5.2"
     },
     "mysql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.0.12",
+      "constraint": ">= 1.3.0"
     },
     "openssl": {
-      "locked_version": "1.1.0"
+      "locked_version": "1.1.0",
+      "constraint": "~> 1.1"
     },
     "postgresql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.1.0",
+      "constraint": ">= 1.0.0"
     },
     "aws": {
-      "locked_version": "0.101.4"
+      "locked_version": "0.101.6"
     },
     "xfs": {
       "locked_version": "1.1.0"
+    },
+    "ubuntu": {
+      "locked_version": "1.1.2",
+      "constraint": "~> 1.1.2"
     }
   }
 }
