@@ -20,8 +20,8 @@ KTC::Network.node = node
 # in the future maybe you might want some external service manageing this
 
 endpoint = Services::Endpoint.new "mysql",
-  ip:    vip[:mysql][:ip],
-  port:  vip[:mysql][:port],
+  ip:    node[:vip][:mysql][:ip],
+  port:  node[:vip][:mysql][:port],
   proto: "tcp"
 endpoint.save
 
