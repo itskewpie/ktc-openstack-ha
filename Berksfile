@@ -4,28 +4,29 @@
 site :opscode
 
 metadata
-cookbook 'ktc-etcd',
-  github: 'cloudware-cookbooks/ktc-etcd',
-  branch: 'develop'
 
 cookbook "keepalived",
   github: "spheromak/keepalived",
   branch: "integration"
 
-cookbook "sysctl",
-  github: "onehealth-cookbooks/sysctl"
-
-cookbook "ktc-testing",
-  github: "cloudware-cookbooks/ktc-testing",
-  branch: "master"
+cookbook 'ktc-etcd',
+  github: 'cloudware-cookbooks/ktc-etcd',
+  branch: 'develop'
 
 cookbook "ktc-utils",
   github: "cloudware-cookbooks/ktc-utils",
   branch: "develop"
 
-cookbook "services",
-  #github: "spheromak/services-cookbook"
-  path: "../services-cookbook"
-
 cookbook "openstack-common",
   github: "stackforge/cookbook-openstack-common"
+
+cookbook "services",
+  github: "spheromak/services-cookbook"
+
+cookbook "sysctl",
+  github: "onehealth-cookbooks/sysctl"
+
+group "integration" do
+  cookbook "ktc-testing",
+    github: "cloudware-cookbooks/ktc-testing"
+end
