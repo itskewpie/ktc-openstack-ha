@@ -34,10 +34,10 @@ node[:vips].each do |name, vip|
 end
 
 keepalived_chkscript "haproxy" do
-   script "haproxy status"
-   interval 5
-   action :create
-   not_if {File.exists?('/etc/keepalived/conf.d/script_haproxy.conf')}
+  script "haproxy status"
+  interval 5
+  action :create
+  not_if { File.exists?('/etc/keepalived/conf.d/script_haproxy.conf') }
 end
 
 #

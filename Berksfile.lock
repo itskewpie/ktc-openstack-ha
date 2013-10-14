@@ -1,6 +1,9 @@
 {
+  "sha": "20416fa60026dc0373473197c666ffe99907c444",
   "sources": {
     "ktc-openstack-ha": {
+      "locked_version": "2.0.0",
+      "constraint": "= 2.0.0",
       "path": "."
     },
     "keepalived": {
@@ -28,6 +31,9 @@
       "git": "git://github.com/spheromak/services-cookbook.git",
       "ref": "29c849ee1842aae0989b5f5f58b9f75c71620ab0"
     },
+    "sysctl": {
+      "locked_version": "0.3.3"
+    },
     "ktc-testing": {
       "locked_version": "0.0.1",
       "git": "git://github.com/cloudware-cookbooks/ktc-testing.git",
@@ -37,7 +43,8 @@
       "locked_version": "1.5.0"
     },
     "cpu": {
-      "locked_version": "0.2.0"
+      "locked_version": "0.2.0",
+      "constraint": ">= 0.2.0"
     },
     "build-essential": {
       "locked_version": "1.4.2"
@@ -48,26 +55,26 @@
     "ark": {
       "locked_version": "0.4.0"
     },
-    "sysctl": {
-      "locked_version": "0.3.3"
-    },
     "partial_search": {
       "locked_version": "1.0.6"
     },
     "apt": {
-      "locked_version": "2.2.0"
+      "locked_version": "2.2.1"
     },
     "database": {
       "locked_version": "1.5.2"
     },
     "mysql": {
-      "locked_version": "3.0.10"
+      "locked_version": "3.0.12",
+      "constraint": ">= 1.3.0"
     },
     "openssl": {
-      "locked_version": "1.1.0"
+      "locked_version": "1.1.0",
+      "constraint": "~> 1.1"
     },
     "postgresql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.1.0",
+      "constraint": ">= 1.0.0"
     },
     "aws": {
       "locked_version": "0.101.6"
@@ -76,7 +83,8 @@
       "locked_version": "1.1.0"
     },
     "ubuntu": {
-      "locked_version": "1.1.2"
+      "locked_version": "1.1.2",
+      "constraint": "~> 1.1.2"
     }
   }
 }
