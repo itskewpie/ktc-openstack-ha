@@ -11,5 +11,9 @@ default[:vips] = {
     algo: "sh",
     kind:  "tun",
     net:  "public"
+  },
+  "mysql" => {
+    ip: "10.0.2.50",
+    port: 3306
   }
 }
