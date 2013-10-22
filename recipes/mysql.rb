@@ -14,14 +14,15 @@ Services::Connection.new run_context: run_context
 
 # setup Network class
 KTC::Network.node = node
+KTC::Vips.vips = node[:vips]
 
 # iterate over the defined vips and build the endpoint for each service
 # For now we are the authority so we make sure this is always a save
 # in the future maybe you might want some external service manageing this
 
 endpoint = Services::Endpoint.new "mysql",
-  ip:    node[:vip][:mysql][:ip],
-  port:  node[:vip][:mysql][:port],
+  ip:    node[:vips][:mysql][:ip],
+  port:  node[:vips][:mysql][:port],
   proto: "tcp"
 endpoint.save
 
