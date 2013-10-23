@@ -26,3 +26,30 @@ suites:
     ha_disabled: true
     openstack:
       developer_mode: true 
+    vips:
+      example:
+        ip: "127.0.0.1"
+        port: 1234
+        proto: "udp"
+        mode: "http"
+        algo: "sh"
+        kind: "tun"
+        net:  "public"
+
+- name: ha_db
+  run_list:
+    - recipe[ktc-testing]
+    - recipe[ktc-etcd]
+    - recipe[ktc-openstack-ha::mysql]
+  attributes:
+    etcd:
+      args: '-c 127.0.0.1:4001 -s 127.0.0.1:7001'
+      servers:
+        - 127.0.0.1
+    ha_disabled: true
+    openstack:
+      developer_mode: true
+    vips:
+      mysql:
+        ip: 10.0.2.50
+        port: 3306
