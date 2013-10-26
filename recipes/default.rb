@@ -62,7 +62,7 @@ endpoints.each do |ep|
     balance "roundrobin"
     mode "http"
     servers lb_service.members.map {
-      |m| "#{m.ip}:#{m.port} #{m.weight} maxconn 500 check"
+      |m| "#{m.name} #{m.ip}:#{m.port} weight #{m.weight} maxconn 500 check"
     }
   end
 end
