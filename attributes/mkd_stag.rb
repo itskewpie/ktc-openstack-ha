@@ -24,10 +24,6 @@ default[:vips] = {
     ip: "20.0.1.253",
     port: 8773
   },
-  "compute-ec2-admin" => {
-    ip: "20.0.1.253",
-    port: 8773
-  },
   "compute-xvpvnc" => {
     ip: "20.0.1.253",
     port: 6081,
