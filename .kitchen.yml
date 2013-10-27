@@ -29,10 +29,6 @@ suites:
     vips:
       tags:
         api: 10.0.2.50
-      endpoints:
-        example:
-          port: 1234
-          tag: api
 
 - name: ha_db
   run_list:
@@ -50,7 +46,3 @@ suites:
     vips:
       tags:
         mysql: 10.0.2.50
-      endpoints:
-        mysql:
-          port: 3306
-          group: mysql
