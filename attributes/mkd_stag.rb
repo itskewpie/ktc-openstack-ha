@@ -1,58 +1,62 @@
 # setup mkd_stag vips
-return  unless  chef_environment == "mkd_stag"
+return unless  chef_environment == "mkd_stag"
 # we want to override defaults
 include_attribute "ktc-openstack-ha::default"
 
 default[:vips] = {
-  "mysql" => {
-    ip: "20.0.1.253",
-    port: 3306,
+  "tags" => {
+    api: "20.0.1.253",
+    mysql: "20.0.1.252"
   },
-  "identity-api" => {
-    ip: "20.0.1.253",
-    port: 5000
-  },
-  "identity-admin" => {
-    ip: "20.0.1.253",
-    port: 35357
-  },
-  "compute-api" => {
-    ip: "20.0.1.253",
-    port: 8774
-  },
-  "compute-ec2-api" => {
-    ip: "20.0.1.253",
-    port: 8773
-  },
-  "compute-xvpvnc" => {
-    ip: "20.0.1.253",
-    port: 6081,
-    algo: "sh"
-  },
-  "compute-novnc" => {
-    ip: "20.0.1.253",
-    port: 6080,
-    algo: "sh"
-  },
-  "network-api" => {
-    ip: "20.0.1.253",
-    port: 9696
-  },
-  "image-api" => {
-    ip: "20.0.1.253",
-    port: 9292
-  },
-  "image-registry" => {
-    ip: "20.0.1.253",
-    port: 9191
-  },
-  "volume-api" => {
-    ip: "20.0.1.253",
-    port: 8776
-  },
-  "metering-api" => {
-    ip: "20.0.1.253",
-    port: 8777
+  "endpoints" => {
+    "mysql" => {
+      port: 3306,
+      tag: "mysql"
+    },
+    "identity-api" => {
+      port: 5000,
+      tag: "api"
+    },
+    "identity-admin" => {
+      port: 35357,
+      tag: "api"
+    },
+    "compute-api" => {
+      port: 8774,
+      tag: "api"
+    },
+    "compute-ec2-api" => {
+      port: 8773,
+      tag: "api"
+    },
+    "compute-xvpvnc" => {
+      port: 6081,
+      tag: "api"
+    },
+    "compute-novnc" => {
+      port: 6080,
+      tag: "api"
+    },
+    "network-api" => {
+      port: 9696,
+      tag: "api"
+    },
+    "image-api" => {
+      port: 9292,
+      tag: "api"
+    },
+    "image-registry" => {
+      port: 9191,
+      tag: "api"
+    },
+    "volume-api" => {
+      port: 8776,
+      tag: "api"
+    },
+    "metering-api" => {
+      port: 8777,
+      tag: "api"
+    }
   }
 
   # options and "mode" are ignored

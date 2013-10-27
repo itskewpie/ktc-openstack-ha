@@ -19,18 +19,18 @@ KTC::Vips.vips = node[:vips]
 # setup Network class
 KTC::Network.node = node
 
-# iterate over the defined vips and build the endpoint for each service
-# For now we are the authority so we make sure this is always a save
-# in the future maybe you might want some external service manageing this
+# iterate over the api specific vips and build the endpoint for each service
 endpoints = []
-node[:vips].each do |name, vip|
-  proto = vip[:proto] || "tcp"
-  endpoint = Services::Endpoint.new name,
-    ip:    vip[:ip],
-    port:  vip[:port],
-    proto: proto
-  endpoint.save
-  endpoints.push endpoint
+node[:vips][:endpoints].each do |name, ep|
+  if ep[:tag].eql?("api")
+    proto = ep[:proto] || "tcp"
+    endpoint = Services::Endpoint.new name,
+      ip: node[:vips][:tags][:api],
+      port: ep[:port],
+      proto: proto
+    endpoint.save
+    endpoints.push endpoint
+  end
 end
 
 keepalived_chkscript "haproxy" do
@@ -48,7 +48,8 @@ end
 keepalived_vrrp "public-openstack-ha" do
   interface KTC::Network.if_lookup "private"
   virtual_router_id KTC::Network.last_octet(KTC::Network.address "private")
-  virtual_ipaddress KTC::Vips.addresses "public"
+  #virtual_ipaddress KTC::Vips.addresses "public"
+  virtual_ipaddress [ node[:vips][:tags][:api] ]
 end
 
 # roll over and setup these vips
