@@ -1,6 +1,9 @@
 {
+  "sha": "c9c52cf380e88a977892288cdc38d13343b1a03f",
   "sources": {
     "ktc-openstack-ha": {
+      "locked_version": "2.0.2",
+      "constraint": "= 2.0.2",
       "path": "."
     },
     "keepalived": {
@@ -16,7 +19,8 @@
       "locked_version": "1.5.0"
     },
     "cpu": {
-      "locked_version": "0.2.0"
+      "locked_version": "0.2.0",
+      "constraint": ">= 0.2.0"
     },
     "build-essential": {
       "locked_version": "1.4.2"
@@ -28,7 +32,8 @@
       "locked_version": "0.4.0"
     },
     "partial_search": {
-      "locked_version": "1.0.6"
+      "locked_version": "1.0.6",
+      "constraint": "~> 1.0.2"
     },
     "services": {
       "locked_version": "1.1.1"
@@ -40,7 +45,8 @@
       "locked_version": "0.3.4"
     },
     "openstack-common": {
-      "locked_version": "0.4.3"
+      "locked_version": "0.4.3",
+      "constraint": "~> 0.4.3"
     },
     "apt": {
       "locked_version": "2.2.1"
@@ -49,13 +55,15 @@
       "locked_version": "1.4.0"
     },
     "mysql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.0.4",
+      "constraint": ">= 1.3.0"
     },
     "openssl": {
       "locked_version": "1.1.0"
     },
     "postgresql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.0.4",
+      "constraint": ">= 1.0.0"
     },
     "aws": {
       "locked_version": "0.101.6"
