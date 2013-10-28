@@ -49,11 +49,7 @@ keepalived_vrrp "public-openstack-ha" do
   interface KTC::Network.if_lookup "private"
   virtual_router_id KTC::Network.last_octet(KTC::Network.address "private")
   virtual_ipaddress [node[:vips][:tags][:api]]
-end
-
-# needed or the vrrp config won't take & haproxy won't start
-service "keepalived" do
-  action :restart
+  notifies :restart, "service[keepailved]", :immediately
 end
 
 # roll over and setup these vips

@@ -32,8 +32,5 @@ keepalived_vrrp "public-mysql" do
   interface KTC::Network.if_lookup "private"
   virtual_router_id KTC::Network.last_octet(KTC::Network.address "private")
   virtual_ipaddress [ip]
-end
-
-service "keepalived" do
-  action :restart
+  notifies :restart, "service[keepailved]", :immediately
 end
