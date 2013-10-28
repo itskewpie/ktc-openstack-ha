@@ -12,10 +12,6 @@ package "ipvsadm"
 # initialize the Services (etc) connection
 Services::Connection.new run_context: run_context
 
-# setup the vip data
-# TODO: Vips prob belongs in KTC::Network
-KTC::Vips.vips = node[:vips]
-
 # setup Network class
 KTC::Network.node = node
 

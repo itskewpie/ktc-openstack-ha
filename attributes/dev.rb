@@ -1,5 +1,5 @@
 # setup dev vips
-return  unless  chef_environment == "dev"
+return unless chef_environment == "dev"
 # we want to override defaults
 include_attribute "ktc-openstack-ha::default"
 

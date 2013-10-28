@@ -1,5 +1,5 @@
 # keepalived defaults
-#
+
 include_attribute "keepalived"
 
 # the routers are on their own vlan
