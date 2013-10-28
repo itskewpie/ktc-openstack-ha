@@ -27,14 +27,8 @@ suites:
     openstack:
       developer_mode: true 
     vips:
-      example:
-        ip: "127.0.0.1"
-        port: 1234
-        proto: "udp"
-        mode: "http"
-        algo: "sh"
-        kind: "tun"
-        net:  "public"
+      tags:
+        api: 10.0.2.50
 
 - name: ha_db
   run_list:
@@ -50,6 +44,5 @@ suites:
     openstack:
       developer_mode: true
     vips:
-      mysql:
-        ip: 10.0.2.50
-        port: 3306
+      tags:
+        mysql: 10.0.2.50
