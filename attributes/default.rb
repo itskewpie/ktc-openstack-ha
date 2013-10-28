@@ -27,8 +27,8 @@ default[:vips] = {
       tag: "api"
     },
     "compute-novnc" => {
-       port: 6080,
-       tag: "api"
+      port: 6080,
+      tag: "api"
     },
     "network-api" => {
       port: 9696,
