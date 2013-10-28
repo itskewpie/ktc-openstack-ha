@@ -40,20 +40,14 @@ keepalived_chkscript "haproxy" do
   not_if { File.exists?('/etc/keepalived/conf.d/script_haproxy.conf') }
 end
 
-#
-# setup a VRRP instance on public int
-#  right now we aren't using any other int
-#  when we need  something on all we can iterate through interface_mapping
-#  and build there
+# setup a VRRP instance on vip from attrs
 keepalived_vrrp "public-openstack-ha" do
   interface KTC::Network.if_lookup "private"
   virtual_router_id KTC::Network.last_octet(KTC::Network.address "private")
   virtual_ipaddress [node[:vips][:tags][:api]]
-  notifies :restart, "service[keepailved]", :immediately
 end
 
-# roll over and setup these vips
-#  as virtual  servers
+# roll over and setup these vips as virtual servers
 endpoints.each do |ep|
   # load service from etcd
   lb_service = Services::Service.new(ep.name)
