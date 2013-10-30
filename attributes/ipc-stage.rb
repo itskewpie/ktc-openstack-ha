@@ -3,9 +3,7 @@ return unless chef_environment == "ipc-stage"
 # we want to override defaults
 include_attribute "ktc-openstack-ha::default"
 
-default[:vips] = {
- "tags" => {
-    mysql: "10.9.241.35",
-    api: "10.9.241.36"
-  }
+default[:vips][:tags] = {
+  mysql: "10.9.241.35",
+  api: "10.9.241.36"
 }
