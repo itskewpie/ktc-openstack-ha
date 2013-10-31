@@ -36,14 +36,6 @@
   /bin/netstat -tan | grep LISTEN | grep -q 10.0.2.50:9696
 }
 
-@test "image-api balancer port configured" {
-  /bin/netstat -tan | grep LISTEN | grep -q 10.0.2.50:9292
-}
-
-@test "image-registry balancer port configured" {
-  /bin/netstat -tan | grep LISTEN | grep -q 10.0.2.50:9191
-}
-
 @test "volume-api balancer port configured" {
   /bin/netstat -tan | grep LISTEN | grep -q 10.0.2.50:8776
 }

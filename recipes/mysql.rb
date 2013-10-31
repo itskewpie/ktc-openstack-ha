@@ -1,7 +1,6 @@
-#
 # Cookbook Name:: ktc-openstack-ha
 # Recipe:: default
-#
+
 include_recipe "sysctl"
 include_recipe "services"
 include_recipe "keepalived"
@@ -12,10 +11,6 @@ package "ipvsadm"
 # initialize the Services (etc) connection
 Services::Connection.new run_context: run_context
 
-# setup Network class
-KTC::Network.node = node
-KTC::Vips.vips = node[:vips]
-
 ip = node[:vips][:tags][:mysql]
 endpoint = Services::Endpoint.new "mysql",
   ip: ip,
@@ -23,7 +18,9 @@ endpoint = Services::Endpoint.new "mysql",
   proto: "tcp"
 endpoint.save
 
-#
+# setup Network class
+KTC::Network.node = node
+
 # setup a VRRP instance on public int
 #  right now we aren't using any other int
 #  when we need  something on all we can iterate through interface_mapping
