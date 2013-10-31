@@ -33,14 +33,6 @@ default[:vips][:endpoints] = {
     port: 9696,
     tag: "api"
   },
-  "image-api" => {
-    port: 9292,
-    tag: "api"
-  },
-  "image-registry" => {
-    port: 9191,
-    tag: "api"
-  },
   "volume-api" => {
     port: 8776,
     tag: "api"
