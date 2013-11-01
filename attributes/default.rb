@@ -13,6 +13,10 @@ default[:vips][:endpoints] = {
     port: 35357,
     tag: "api"
   },
+  "compute-metadata-api" => {
+    port: 8775,
+    tag: "api"
+  },
   "compute-api" => {
     port: 8774,
     tag: "api"
