@@ -17,6 +17,8 @@ suites:
   run_list:
     - recipe[ktc-testing]
     - recipe[ktc-etcd]
+    - recipe[sensu::default]
+    - recipe[collectd::client]
     - recipe[ktc-openstack-ha]
   attributes:
     etcd:
