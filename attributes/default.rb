@@ -13,6 +13,10 @@ default[:vips][:endpoints] = {
     port: 35357,
     tag: "api"
   },
+  "image-api" => {
+    port: 9292,
+    tag: "api"
+  },
   "compute-metadata-api" => {
     port: 8775,
     tag: "api"

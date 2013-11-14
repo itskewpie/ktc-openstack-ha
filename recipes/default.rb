@@ -39,7 +39,7 @@ end
 # setup a VRRP instance on vip from attrs
 keepalived_vrrp "public-openstack-ha" do
   interface KTC::Network.if_lookup "private"
-  virtual_router_id KTC::Network.last_octet(KTC::Network.address "private")
+  virtual_router_id KTC::Network.last_octet(node[:vips][:tags][:api])
   virtual_ipaddress [node[:vips][:tags][:api]]
 end
 
@@ -59,3 +59,21 @@ endpoints.each do |ep|
 end
 
 include_recipe "haproxy"
+
+# process monitoring and sensu-check config
+processes = node[:keepalived][:processes] + node[:haproxy][:processes]
+#processes << node[:haproxy][:processes]
+
+processes.each do |process|
+  sensu_check "check_process_#{process[:name]}" do
+    command "check-procs.rb -c 10 -w 10 -C 1 -W 1 -p #{process[:name]}"
+    handlers ["default"]
+    standalone true
+    interval 20
+  end
+end
+
+collectd_processes "keepalived-processes" do
+  input processes
+  key "shortname"
+end
