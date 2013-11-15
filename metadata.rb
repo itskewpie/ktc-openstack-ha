@@ -8,9 +8,9 @@ supports          "ubuntu"
 
 depends "haproxy"
 # hard lock here
+#  only cause we own this fork
 depends "keepalived", "= 1.0.5"
-depends "etcd"
-depends "services"
+depends "ktc-etcd"
 depends "sysctl"
 depends "ktc-utils"
 depends "ktc-monitor"
