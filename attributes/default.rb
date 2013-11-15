@@ -1,6 +1,10 @@
 include_attribute "ktc-utils"
 
 default[:vips][:endpoints] = {
+  "rabbitmq" => {
+    port: 5672,
+    tag: "rabbitmq"
+  },
   "mysql" => {
     port: 3306,
     tag: "mysql"

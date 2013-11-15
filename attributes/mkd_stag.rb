@@ -5,5 +5,6 @@ include_attribute "ktc-openstack-ha::default"
 
 default[:vips][:tags] = {
   api: "20.0.1.253",
-  mysql: "20.0.1.252"
+  mysql: "20.0.1.252",
+  rabbitmq: "20.0.1.251"
 }
