@@ -16,9 +16,8 @@ suites:
 - name: default
   run_list:
     - recipe[ktc-testing]
-    - recipe[ktc-etcd]
-    - recipe[sensu::default]
-    - recipe[collectd::client]
+    - recipe[etcd::compile_time]
+    - recipe[ktc-monitor::client]
     - recipe[ktc-openstack-ha]
   attributes:
     etcd:
@@ -35,7 +34,7 @@ suites:
 - name: ha_db
   run_list:
     - recipe[ktc-testing]
-    - recipe[ktc-etcd]
+    - recipe[etcd::compile_time]
     - recipe[ktc-openstack-ha::mysql]
   attributes:
     etcd:
