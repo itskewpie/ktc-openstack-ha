@@ -29,6 +29,7 @@ node.run_state[:active_passive].each do |ap_service|
   #  and build there
   keepalived_vrrp "public-#{ap_service.to_s}" do
     interface KTC::Network.if_lookup "private"
+    priority KTC::Network.last_octet(node[:ipaddress])
     virtual_router_id KTC::Network.last_octet(ip)
     virtual_ipaddress [ip]
   end
