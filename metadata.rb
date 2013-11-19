@@ -11,6 +11,5 @@ depends "haproxy"
 #  only cause we own this fork
 depends "keepalived", "= 1.0.5"
 depends "ktc-etcd"
-depends "sysctl"
 depends "ktc-utils"
-depends "ktc-monitor"
+depends "sysctl"
