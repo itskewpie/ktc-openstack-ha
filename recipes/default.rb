@@ -38,6 +38,7 @@ end
 
 # setup a VRRP instance on vip from attrs
 keepalived_vrrp "public-openstack-ha" do
+  nopreempt true
   interface KTC::Network.if_lookup "private"
   priority KTC::Network.last_octet(node[:ipaddress])
   virtual_router_id KTC::Network.last_octet(node[:vips][:tags][:api])
