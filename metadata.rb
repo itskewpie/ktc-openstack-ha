@@ -10,7 +10,6 @@ depends "haproxy"
 # hard lock here
 #  only cause we own this fork
 depends "keepalived", "= 1.0.5"
-depends "ktc-etcd"
 depends "ktc-monitor"
 depends "ktc-utils"
 depends "sysctl"
