@@ -64,18 +64,16 @@ include_recipe "haproxy"
 
 # process monitoring and sensu-check config
 processes = node[:keepalived][:processes] + node[:haproxy][:processes]
-#processes << node[:haproxy][:processes]
 
 processes.each do |process|
   sensu_check "check_process_#{process[:name]}" do
     command "check-procs.rb -c 10 -w 10 -C 1 -W 1 -p #{process[:name]}"
     handlers ["default"]
     standalone true
-    interval 20
+    interval 30
   end
 end
 
-collectd_processes "keepalived-processes" do
+ktc_collectd_processes "openstack-ha-processes" do
   input processes
-  key "shortname"
 end
